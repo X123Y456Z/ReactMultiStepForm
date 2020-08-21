@@ -34,7 +34,7 @@ const VerticalLinearStepper = () => {
   const context = useContext(StepperContext);
 
   return (
-    <div className="{classes.root}">
+    <div className="{classes.root}" style={{ width: "600px" }}>
       <TopBar />
       <InitialSetup />
       <Stepper activeStep={context.activeStep} orientation="vertical">

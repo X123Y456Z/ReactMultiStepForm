@@ -46,7 +46,7 @@ const InitialSetup = () => {
       <p style={{ fontFamily: "Arial", letterSpacing: "0.5px" }}>
         Select file for initial setup
       </p>
-      <input type="file" onChange={readFile} accept=".json" />
+      <input type="file" onChange={readFile} accept=".yolo" />
       <div
         style={{
           color: "crimson",

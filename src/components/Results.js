@@ -35,10 +35,17 @@ const InputData = ({ prevStep, data }) => {
     <div>
       <pre>{JSON.stringify(context, null, 2)}</pre>
       <div style={{ marginTop: "20px" }}>
-        <Button onClick={() => saveData("configurationFile.json", btoa(json))}>
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={() => saveData("configurationFile.yolo", btoa(json))}
+        >
           Save file
         </Button>
-        <Button onClick={() => updateContext.updateItem({ activeStep: 1 })}>
+        <Button
+          style={{ float: "right" }}
+          onClick={() => updateContext.updateItem({ activeStep: 1 })}
+        >
           Back
         </Button>
       </div>
