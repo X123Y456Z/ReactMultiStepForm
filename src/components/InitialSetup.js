@@ -1,15 +1,37 @@
-import React, { useContext } from "react";
-import { StepperContextDispatch } from "../ContextApp";
+import React, { useContext, useState } from "react";
+import { StepperContextDispatch, StepperContext } from "../ContextApp";
+import { isEqual } from "lodash";
+
+//React configuration file
 
 const InitialSetup = () => {
   const updateContext = useContext(StepperContextDispatch);
+  const context = useContext(StepperContext);
+  const [error, setError] = useState("");
+  const [progress, setProgress] = useState("");
 
   const readFile = (event) => {
     const input = event.target;
     const reader = new FileReader();
+    setProgress("Loading file....");
+
     reader.onload = function () {
+      setProgress("");
       const data = reader.result;
-      const json = JSON.parse(data);
+      try {
+        setError("");
+        var decodeJSON = atob(data);
+        var json = JSON.parse(decodeJSON);
+      } catch (error) {
+        setError("Invalid file format");
+        return 0;
+      }
+
+      if (!isEqual(Object.keys(context), Object.keys(json))) {
+        setError("Json file is not valid");
+        return 0;
+      } else {
+      }
       updateContext.updateItem(json);
 
       const { email, firstName, lastName } = json;
@@ -24,7 +46,27 @@ const InitialSetup = () => {
       <p style={{ fontFamily: "Arial", letterSpacing: "0.5px" }}>
         Select file for initial setup
       </p>
-      <input type="file" onChange={readFile} accept=".json" />
+      <input type="file" onChange={readFile} accept=".yolo" />
+      <div
+        style={{
+          color: "crimson",
+          marginTop: "15px",
+          fontFamily: "Arial",
+          fontWeight: "bold"
+        }}
+      >
+        {error}
+      </div>
+      <div
+        style={{
+          color: "rgba(0,0,0,0.8)",
+          marginTop: "15px",
+          fontFamily: "Arial",
+          fontWeight: "bold"
+        }}
+      >
+        {progress}
+      </div>
     </div>
   );
 };

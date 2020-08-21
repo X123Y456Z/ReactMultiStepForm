@@ -1,20 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { StepperContext } from "../ContextApp";
 
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Button
-} from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
 
 export const TopBar = () => {
   const context = useContext(StepperContext);
-
-  useEffect(() => {
-    console.log(`%cCurrent state: ${JSON.stringify(context)}`, "color:green");
-  });
 
   const userName = context.firstName === "" ? "Guest" : context.firstName;
   return (

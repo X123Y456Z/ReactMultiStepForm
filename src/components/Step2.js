@@ -41,18 +41,19 @@ const AdditionalData = ({ nextStep, prevStep, values, defaults }) => {
         />
         <div style={{ marginTop: "20px" }}>
           <Button
-            onClick={() => updateContext.updateItem({ activeStep: 0 })}
-            className
-          >
-            Back
-          </Button>
-          <Button
             variant="contained"
             color="primary"
             className="{classes.button}"
             type="submit"
           >
             Next
+          </Button>
+          <Button
+            onClick={() => updateContext.updateItem({ activeStep: 0 })}
+            className
+            style={{ float: "right" }}
+          >
+            Back
           </Button>
         </div>
       </form>

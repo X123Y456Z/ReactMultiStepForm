@@ -48,9 +48,6 @@ const InputData = () => {
         />
 
         <div style={{ marginTop: "20px" }}>
-          <Button disabled className>
-            Back
-          </Button>
           <Button
             variant="contained"
             color="primary"
@@ -58,6 +55,9 @@ const InputData = () => {
             type="submit"
           >
             Next
+          </Button>
+          <Button disabled className style={{ float: "right" }}>
+            Back
           </Button>
         </div>
       </form>
