@@ -20,7 +20,8 @@ const InitialSetup = () => {
       const data = reader.result;
       try {
         setError("");
-        var json = JSON.parse(data);
+        var decodeJSON = atob(data);
+        var json = JSON.parse(decodeJSON);
       } catch (error) {
         setError("Invalid file format");
         return 0;

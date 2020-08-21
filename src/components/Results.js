@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Button } from "@material-ui/core";
 import { StepperContext, StepperContextDispatch } from "../ContextApp";
-import bson from "bson";
+import CryptoJS from "crypto-js";
 
 const InputData = ({ prevStep, data }) => {
   const context = useContext(StepperContext);
@@ -25,11 +25,17 @@ const InputData = ({ prevStep, data }) => {
     document.body.removeChild(link);
     updateContext.resetState();
   };
+  const json = JSON.stringify(context);
+  // const exc = CryptoJS.AES.encrypt(json, "12345");
+  // const deect = CryptoJS.AES.decrypt(exc, "12345").toString(CryptoJS.enc.Utf8);
+  console.log(`Context data ${json}`);
+  // console.log(`Encrypted data ${exc}`);
+  // console.log(`Decrypted data ${deect}`);
   return (
     <div>
       <pre>{JSON.stringify(context, null, 2)}</pre>
       <div style={{ marginTop: "20px" }}>
-        <Button onClick={() => saveData("configurationFile.json", context)}>
+        <Button onClick={() => saveData("configurationFile.json", btoa(json))}>
           Save file
         </Button>
         <Button onClick={() => updateContext.updateItem({ activeStep: 1 })}>
