@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { StepperContextDispatch } from "../ContextApp";
 
+//React configuration file
+
 const InitialSetup = () => {
   const updateContext = useContext(StepperContextDispatch);
 
