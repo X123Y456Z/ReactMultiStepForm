@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Button } from "@material-ui/core";
 import { StepperContext, StepperContextDispatch } from "../ContextApp";
+import bson from "bson";
 
 const InputData = ({ prevStep, data }) => {
   const context = useContext(StepperContext);
@@ -28,11 +29,7 @@ const InputData = ({ prevStep, data }) => {
     <div>
       <pre>{JSON.stringify(context, null, 2)}</pre>
       <div style={{ marginTop: "20px" }}>
-        <Button
-          onClick={() =>
-            saveData("configurationFile.json", JSON.stringify(context))
-          }
-        >
+        <Button onClick={() => saveData("configurationFile.json", context)}>
           Save file
         </Button>
         <Button onClick={() => updateContext.updateItem({ activeStep: 1 })}>
